@@ -2,22 +2,48 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 
+// TODO
+// - Add automatic keybinding for .csx files to invoke runSelection
+// - Helper to check & install dotnet script or prompt user to install it
+// - Write readme
+
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "dotnetscriptr" is now active!');
+	let csInteractive: vscode.Terminal | undefined;
 
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with registerCommand
 	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('extension.helloWorld', () => {
+	let disposable = vscode.commands.registerTextEditorCommand('dotnetscriptr.runSelection', (textEditor, edit) => {
 		// The code you place here will be executed every time your command is executed
 
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World.');
+		// Check if we have a terminal
+		if (!csInteractive) {
+			const terminalName = "C# Interactive";
+
+			csInteractive = vscode.window.createTerminal({
+				name: terminalName
+			});
+
+			csInteractive.show();
+			csInteractive.sendText(`dotnet script`);
+		}
+
+		// Send selection to terminal
+		const selection = textEditor.selection;
+
+		let text: string;
+		if (selection.isEmpty) {
+			text = textEditor.document.lineAt(selection.start.line).text;
+
+			// TODO: Move to next line
+		}
+		else 
+			text = textEditor.document.getText(selection);
+
+		csInteractive.sendText(text);
 	});
 
 	context.subscriptions.push(disposable);

@@ -10,14 +10,21 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:extension.helloWorld"
+		"onCommand:dotnetscriptr.runSelection"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "extension.helloWorld",
-				"title": "Hello World"
+				"command": "dotnetscriptr.runSelection",
+				"title": "dotnetscriptr - Run Selection"
+			}
+		],
+		"keybindings": [
+			{
+				"command": "dotnetscriptr.runSelection",
+				"key": "shift+enter",
+				"when": "editorTextFocus && editorLangId == 'csharp'"
 			}
 		]
 	},
