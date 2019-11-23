@@ -14,7 +14,7 @@
 	"activationEvents": [
 		"onCommand:dotnetscriptr.runSelection"
 	],
-	"main": "./out/extension.js",
+	"main": "./dist/extension.js",
 	"contributes": {
 		"commands": [
 			{
@@ -31,10 +31,11 @@
 		]
 	},
 	"scripts": {
-		"vscode:prepublish": "npm run compile",
-		"compile": "tsc -p ./",
-		"watch": "tsc -watch -p ./",
-		"pretest": "npm run compile",
+		"vscode:prepublish": "webpack --mode production",
+		"webpack": "webpack --mode development",
+		"webpack-dev": "webpack --mode development --watch",
+		"watch": "npm run webpack-dev",
+		"pretest": "tsc -p ./",
 		"test": "node ./out/test/runTest.js"
 	},
 	"devDependencies": {
@@ -44,8 +45,11 @@
 		"@types/vscode": "^1.40.0",
 		"glob": "^7.1.5",
 		"mocha": "^6.2.2",
+		"ts-loader": "^6.2.1",
 		"tslint": "^5.20.0",
 		"typescript": "^3.6.4",
-		"vscode-test": "^1.2.2"
+		"vscode-test": "^1.2.2",
+		"webpack": "^4.41.2",
+		"webpack-cli": "^3.3.10"
 	}
 }

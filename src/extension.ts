@@ -5,6 +5,8 @@ import * as vscode from 'vscode';
 // TODO
 // - Add automatic keybinding for .csx files to invoke runSelection
 // - Helper to check & install dotnet script or prompt user to install it
+// - Command to add omnisharp.json stub
+// - Command to initialize C# script file?
 // - Write readme
 
 // this method is called when your extension is activated
@@ -19,6 +21,12 @@ export function activate(context: vscode.ExtensionContext) {
 	let disposable = vscode.commands.registerTextEditorCommand('dotnetscriptr.runSelection', (textEditor, edit) => {
 		// The code you place here will be executed every time your command is executed
 
+		// Check if terminal has been closed
+		if (csInteractive && vscode.window.terminals.indexOf(csInteractive) < 0) {
+			csInteractive.dispose();
+			csInteractive = undefined;
+		}
+
 		// Check if we have a terminal
 		if (!csInteractive) {
 			const terminalName = "C# Interactive";
@@ -27,7 +35,7 @@ export function activate(context: vscode.ExtensionContext) {
 				name: terminalName
 			});
 
-			csInteractive.show();
+			csInteractive.show(true);
 			csInteractive.sendText(`dotnet script`);
 		}
 
