@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import * as runSelection from './commands/runSelection';
-import * as installDotNetScript from './commands/installDotNetScript';
+import * as install from './commands/install';
 
 // TODO
 // - Settings for various things; advance next line
@@ -18,7 +18,7 @@ export function activate(context: vscode.ExtensionContext) {
 	runSelection.register(context);
 
 	// Register installation command
-	installDotNetScript.register(context);
+	install.register(context);
 
 	// Ensure dotnet script is installed
 }

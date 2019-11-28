@@ -14,15 +14,15 @@
 	"activationEvents": [
 		"onCommand:dotnetscriptr.runSelection"
 	],
-	"main": "./dist/extension.js",
+	"main": "./out/extension.js",
 	"extensionDependencies": [
 		"vscode.csharp"
 	],
 	"contributes": {
 		"commands": [
 			{
-				"command": "dotnetscriptr.installDotNetScript",
-				"title": "dotnetscriptr - Install Dotnet Script"
+				"command": "dotnetscriptr.install",
+				"title": "dotnetscriptr - Install Dependencies"
 			},
 			{
 				"command": "dotnetscriptr.runSelection",
@@ -44,9 +44,9 @@
 		"webpack": "webpack --mode development",
 		"webpack-dev": "webpack --mode development --watch",
 		"compile": "tsc -p ./",
-		"watch": "tsc -watch -p ./",
+		"watch": "tsc --watch -p ./",
 		"pretest": "npm run compile",
-		"test": "node ./dist/test/runTest.js"
+		"test": "node ./out/test/runTest.js"
 	},
 	"devDependencies": {
 		"@types/glob": "^7.1.1",
