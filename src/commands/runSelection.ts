@@ -4,9 +4,6 @@ let csInteractive: vscode.Terminal | undefined;
 
 export const register = (context: vscode.ExtensionContext) => {
 
-    // The command has been defined in the package.json file
-    // Now provide the implementation of the command with registerCommand
-    // The commandId parameter must match the command field in package.json
     let disposable = vscode.commands.registerTextEditorCommand('dotnetscriptr.runSelection', (textEditor, edit) => {
         // The code you place here will be executed every time your command is executed
 
@@ -18,7 +15,7 @@ export const register = (context: vscode.ExtensionContext) => {
 
         // Check if we have a terminal
         if (!csInteractive) {
-            const terminalName = "C# Interactive";
+            const terminalName = "C# Interactives";
 
             csInteractive = vscode.window.createTerminal({
                 name: terminalName

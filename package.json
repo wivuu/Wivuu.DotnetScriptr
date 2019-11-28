@@ -15,8 +15,15 @@
 		"onCommand:dotnetscriptr.runSelection"
 	],
 	"main": "./dist/extension.js",
+	"extensionDependencies": [
+		"vscode.csharp"
+	],
 	"contributes": {
 		"commands": [
+			{
+				"command": "dotnetscriptr.installDotNetScript",
+				"title": "dotnetscriptr - Install Dotnet Script"
+			},
 			{
 				"command": "dotnetscriptr.runSelection",
 				"title": "dotnetscriptr - Run Selection"
@@ -31,14 +38,15 @@
 		]
 	},
 	"scripts": {
-		"package": "vsce package",
 		"vscode:prepublish": "webpack --mode production",
+		"_vscode:uninstall": "todo",
+		"package": "vsce package",
 		"webpack": "webpack --mode development",
 		"webpack-dev": "webpack --mode development --watch",
 		"compile": "tsc -p ./",
 		"watch": "tsc -watch -p ./",
 		"pretest": "npm run compile",
-		"test": "node ./out/test/runTest.js"
+		"test": "node ./dist/test/runTest.js"
 	},
 	"devDependencies": {
 		"@types/glob": "^7.1.1",

@@ -1,8 +1,8 @@
 import * as vscode from 'vscode';
 import * as runSelection from './commands/runSelection';
+import * as installDotNetScript from './commands/installDotNetScript';
 
 // TODO
-// - Add automatic keybinding for .csx files to invoke runSelection
 // - Settings for various things; advance next line
 // - Helper to check & install dotnet script or prompt user to install it
 // - Command to add omnisharp.json stub
@@ -16,6 +16,11 @@ export function activate(context: vscode.ExtensionContext) {
 
 	// Register run selection command
 	runSelection.register(context);
+
+	// Register installation command
+	installDotNetScript.register(context);
+
+	// Ensure dotnet script is installed
 }
 
 // this method is called when your extension is deactivated
