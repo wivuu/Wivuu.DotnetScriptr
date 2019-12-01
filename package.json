@@ -13,7 +13,8 @@
 	],
 	"activationEvents": [
 		"onCommand:dotnetscriptr.runSelection",
-		"onCommand:dotnetscriptr.install"
+		"onCommand:dotnetscriptr.install",
+		"onCommand:dotnetscriptr.initializeFolder"
 	],
 	"main": "./out/extension.js",
 	"extensionDependencies": [
@@ -28,6 +29,10 @@
 			{
 				"command": "dotnetscriptr.runSelection",
 				"title": "dotnetscriptr - Run Selection"
+			},
+			{
+				"command": "dotnetscriptr.initializeFolder",
+				"title": "dotnetscriptr - Initialize Folder"
 			}
 		],
 		"keybindings": [
