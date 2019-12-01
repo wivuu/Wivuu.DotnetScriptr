@@ -12,6 +12,7 @@
 		"Other"
 	],
 	"activationEvents": [
+		"onLanguage:csharp",
 		"onCommand:dotnetscriptr.runSelection",
 		"onCommand:dotnetscriptr.install",
 		"onCommand:dotnetscriptr.initializeFolder"
