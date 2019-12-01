@@ -15,7 +15,7 @@ export const register = (context: vscode.ExtensionContext) => {
 
         // Check if we have a terminal
         if (!csInteractive) {
-            const terminalName = "C# Interactives";
+            const terminalName = "C# Interactive";
 
             csInteractive = vscode.window.createTerminal({
                 name: terminalName
