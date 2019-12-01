@@ -21,8 +21,9 @@ export const register = (context: vscode.ExtensionContext) => {
                 name: terminalName
             });
 
-            csInteractive.show(true);
             csInteractive.sendText(`dotnet script`);
+            csInteractive.sendText("#cls");
+            csInteractive.show(true);
         }
 
         // Send selection to terminal
