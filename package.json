@@ -14,6 +14,7 @@
 	"activationEvents": [
 		"onLanguage:csharp",
 		"onCommand:dotnetscriptr.runSelection",
+		"onCommand:dotnetscriptr.runDocument",
 		"onCommand:dotnetscriptr.install",
 		"onCommand:dotnetscriptr.initializeFolder"
 	],
@@ -30,6 +31,10 @@
 			{
 				"command": "dotnetscriptr.runSelection",
 				"title": "dotnetscriptr - Run Selection"
+			},
+			{
+				"command": "dotnetscriptr.runDocument",
+				"title": "dotnetscriptr - Run Entire Document"
 			},
 			{
 				"command": "dotnetscriptr.initializeFolder",
