@@ -47,7 +47,17 @@
 				"key": "shift+enter",
 				"when": "editorTextFocus && editorLangId == 'csharp'"
 			}
-		]
+		],
+		"configuration": {
+			"title": "DotnetSciptr",
+			"properties": {
+				"dotnetscriptr.advanceNextLine": {
+					"type": "boolean",
+					"default": false,
+					"description": "Automatically advance to next line after running empty selection"
+				}
+			}
+		}
 	},
 	"scripts": {
 		"vscode:prepublish": "webpack --mode production",

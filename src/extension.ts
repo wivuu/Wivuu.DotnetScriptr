@@ -4,7 +4,6 @@ import * as install from './commands/install';
 import * as initializeFolder from './commands/initializeFolder';
 
 // TODO
-// - Settings for various things; advance next line
 // - Write readme
 // - Logo
 

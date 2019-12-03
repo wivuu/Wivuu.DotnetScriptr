@@ -26,6 +26,7 @@ const createInteractiveTerminal = () => {
 }
 
 const registerRunSelection = (context: vscode.ExtensionContext) => {
+
     let disposable = vscode.commands.registerTextEditorCommand('dotnetscriptr.runSelection', (textEditor, edit) => {
         // Send selection to terminal
         const selection = textEditor.selection;
@@ -34,7 +35,16 @@ const registerRunSelection = (context: vscode.ExtensionContext) => {
         if (selection.isEmpty) {
             text = textEditor.document.lineAt(selection.start.line).text;
 
-            // TODO: Move to next line
+            // Move to next line
+            const config = vscode.workspace.getConfiguration("dotnetscriptr");
+
+            if (config.get("advanceNextLine") === true) {
+                const next = new vscode.Position(selection.start.line + 1, 0);
+
+                textEditor.selections = [
+                    new vscode.Selection(next, next)
+                ];
+            }
         }
         else 
             text = textEditor.document.getText(selection);
