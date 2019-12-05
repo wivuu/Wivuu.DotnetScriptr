@@ -4,7 +4,7 @@
 	"publisher": "Wivuu",
 	"repository": "https://github.com/onionhammer/Wivuu.CSInteractiveVSCode",
 	"description": "",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"preview": true,
 	"engines": {
 		"vscode": "^1.40.0"
