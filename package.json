@@ -5,6 +5,7 @@
 	"repository": "https://github.com/onionhammer/Wivuu.CSInteractiveVSCode",
 	"description": "",
 	"version": "0.0.1",
+	"preview": true,
 	"engines": {
 		"vscode": "^1.40.0"
 	},
