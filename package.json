@@ -4,7 +4,7 @@
 	"publisher": "Wivuu",
 	"repository": "https://github.com/onionhammer/Wivuu.DotnetScriptr",
 	"description": "",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"preview": true,
 	"engines": {
 		"vscode": "^1.40.0"
@@ -64,6 +64,7 @@
 		"vscode:prepublish": "webpack --mode production",
 		"_vscode:uninstall": "todo",
 		"package": "vsce package",
+		"publish": "vsce publish",
 		"webpack": "webpack --mode development",
 		"webpack-dev": "webpack --mode development --watch",
 		"compile": "tsc -p ./",
