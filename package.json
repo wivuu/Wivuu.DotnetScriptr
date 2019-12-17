@@ -5,7 +5,7 @@
 	"repository": "https://github.com/onionhammer/Wivuu.DotnetScriptr",
 	"description": "Execute C#/CSX files interactively in Visual Studio Code.",
 	"icon": "images/icon.png",
-	"version": "0.2.2",
+	"version": "0.2.3",
 	"preview": true,
 	"engines": {
 		"vscode": "^1.40.0"
