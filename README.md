@@ -21,6 +21,9 @@ Execute C#/CSX files interactively in Visual Studio Code.
 
 - **advanceNextLine**: If no text is selected, automatically advances to next line after executing 'Run Selection'.
     - Defaults to `false`
+    
+- **debug**: Enable debug mode in `dotnet script` output. (Requires reload)
+    - Defaults to `false`
 
 ## Known Issues
 There are known limitations within `dotnet script` which are outside of the scope of this extension. For issues relating to `dotnet script` submit issues [here](https://github.com/filipw/dotnet-script/issues)
@@ -29,6 +32,9 @@ There are known limitations within `dotnet script` which are outside of the scop
 
 
 ## Release Notes
+
+### 0.2.4
+Updated dependencies
 
 ### 0.0.1
 Initial release providing basic integration with dotnet script

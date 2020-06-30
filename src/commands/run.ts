@@ -2,7 +2,7 @@ import * as vscode from 'vscode';
 
 let csInteractive: vscode.Terminal | undefined;
 
-const createInteractiveTerminal = () => {
+const createInteractiveTerminal = (debug = false) => {
     // Check if terminal has been closed
     if (csInteractive && vscode.window.terminals.indexOf(csInteractive) < 0) {
         csInteractive.dispose();
@@ -14,10 +14,10 @@ const createInteractiveTerminal = () => {
         const terminalName = "C# Interactive";
 
         csInteractive = vscode.window.createTerminal({
-            name: terminalName
+            name: terminalName,
         });
 
-        csInteractive.sendText(`dotnet script`);
+        csInteractive.sendText(debug ? `dotnet script -d` : `dotnet script`);
         csInteractive.sendText("#cls");
         csInteractive.show(true);
     }
@@ -26,6 +26,8 @@ const createInteractiveTerminal = () => {
 }
 
 const registerRunSelection = (context: vscode.ExtensionContext) => {
+    const config = vscode.workspace.getConfiguration("dotnetscriptr");
+    const enableDebug = config.get("debug") as boolean;
 
     let disposable = vscode.commands.registerTextEditorCommand('dotnetscriptr.runSelection', (textEditor, edit) => {
         // Send selection to terminal
@@ -34,9 +36,6 @@ const registerRunSelection = (context: vscode.ExtensionContext) => {
         let text: string;
         if (selection.isEmpty) {
             text = textEditor.document.lineAt(selection.start.line).text;
-
-            // Move to next line
-            const config = vscode.workspace.getConfiguration("dotnetscriptr");
 
             if (config.get("advanceNextLine") === true) {
                 const next = new vscode.Position(selection.start.line + 1, 0);
@@ -49,7 +48,7 @@ const registerRunSelection = (context: vscode.ExtensionContext) => {
         else 
             text = textEditor.document.getText(selection);
 
-        createInteractiveTerminal().sendText(text);
+        createInteractiveTerminal(enableDebug).sendText(text);
     });
 
     context.subscriptions.push(disposable);
